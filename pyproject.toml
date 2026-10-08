@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "promptx-cli"
+version = "0.2.3"
+description = "Translate and repository-enhance prompts before sending them to Claude Code."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "PromptX contributors" }]
+dependencies = []
+
+[project.scripts]
+promptx = "promptx.cli:main"
+promptx-claude-editor = "promptx.integrations.claude.editor:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-cov>=5"]
+
+[tool.setuptools.packages.find]
+include = ["promptx*"]
+
+[tool.setuptools.package-data]
+"promptx.integrations.claude" = ["skill_template.md"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
